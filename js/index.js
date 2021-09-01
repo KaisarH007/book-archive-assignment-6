@@ -1,13 +1,15 @@
 const searchField = document.getElementById('search-field');
 const errorContainer = document.getElementById('error');
 const booksContainer = document.getElementById('books-detail');
+const totalSearchResult = document.getElementById('total-search-result')
 
 const loadBookData = () => {
     const searchText = searchField.value;
     // clear field 
     searchField.value = '';
-    errorContainer.innerText = '';
+    errorContainer.innerHTML = '';
     booksContainer.textContent = '';
+    totalSearchResult.innerHTML = '';
     //load url
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
 
@@ -17,13 +19,14 @@ const loadBookData = () => {
 }
 
 const displayBookData = (data) => {
-
+    console.log(data)
     if (data.numFound === 0) {
-        errorContainer.innerText = `Dear Sir,
-        Please Input Valid Book Name`;
+        errorContainer.innerHTML = `<h4>Dear Sir,
+        Please Input Valid Book Name</h4>`;
 
     }
     else {
+        totalSearchResult.innerHTML = `<h3>Total Books Found: ${data.numFound} Pcs Books</h3>`
         const books = data.docs;
         books.forEach(book => {
 
