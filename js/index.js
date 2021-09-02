@@ -43,10 +43,14 @@ const displayBookData = (data) => {
                 `<div class="card h-100">
                       <img height="250 px" src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                              <h6 class="card-title text-primary">Book title: ${book.title}</h6>
-                              <p class="card-text">Written by: ${book.author_name[0]}</p>
-                              <p class="card-text">Published by: ${book.publisher[0]}</p>
-                              <p class="card-text">First publish year: ${book.first_publish_year}</p>
+                              <h6 class="card-title text-secondary">Book title:
+                              <span class="text-primary"> ${book.title}</span></h6>
+                              <p class="card-text text-secondary">Written by:
+                               <span class="text-primary">${book.author_name[0]}</span></p>
+                              <p class="card-text text-secondary">Published by:
+                               <span class="text-primary">${book.publisher[0]}</span></p>
+                              <p class="card-text text-secondary">First publish year:
+                               <span class="text-primary">${book.first_publish_year}</span></p>
                          </div>
                  </div>`;
             booksContainer.appendChild(bookDiv);
