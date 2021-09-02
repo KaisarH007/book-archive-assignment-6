@@ -1,15 +1,16 @@
-const searchField = document.getElementById('search-field');
-const errorContainer = document.getElementById('error');
-const booksContainer = document.getElementById('books-detail');
-const totalSearchResult = document.getElementById('total-search-result')
+const searchField = document.getElementById('search-field'); //search field
+const errorContainer = document.getElementById('error'); //error massage div
+const booksContainer = document.getElementById('books-detail'); //book display div
+const totalSearchResult = document.getElementById('total-search-result') //book quantity div
 
+// Data Load Function
 const loadBookData = () => {
     const searchText = searchField.value;
     // clear field 
     searchField.value = '';
-    errorContainer.innerHTML = '';
+    errorContainer.textContent = '';
     booksContainer.textContent = '';
-    totalSearchResult.innerHTML = '';
+    totalSearchResult.textContent = '';
     //load url
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
 
@@ -18,16 +19,22 @@ const loadBookData = () => {
         .then(data => displayBookData(data));
 }
 
+
+//Data display function
 const displayBookData = (data) => {
-    console.log(data)
+
+    //Error Massage
     if (data.numFound === 0) {
-        errorContainer.innerHTML = `<h4>Dear Sir,
+        errorContainer.innerHTML = `<h4 class="p-4">Dear Sir,
         Please Input Valid Book Name</h4>`;
 
     }
     else {
-        totalSearchResult.innerHTML = `<h3>Total Books Found: ${data.numFound} Pcs Books</h3>`
+        // display total book result quantity
+        totalSearchResult.innerHTML = `<h3 class="p-4">Total Search Result: ${data.numFound} Pcs Books</h3>`;
+        //display book result
         const books = data.docs;
+
         books.forEach(book => {
 
             const bookDiv = document.createElement('div');

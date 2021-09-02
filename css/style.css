@@ -1,0 +1,6 @@
+/* Background Banner style */
+body {
+    background: url(images/dark.jpg);
+    background-size: cover;
+    height: 100vh;
+}
