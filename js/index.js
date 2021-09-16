@@ -1,7 +1,14 @@
 const searchField = document.getElementById('search-field'); //search field
+const searchButton = document.getElementById('search-button'); //search button
 const errorContainer = document.getElementById('error'); //error massage div
 const booksContainer = document.getElementById('books-detail'); //book display div
 const totalSearchResult = document.getElementById('total-search-result') //book quantity div
+
+//trigger search button by enter key
+searchField.addEventListener("keypress", function (event) {
+    if (event.key === 'Enter')
+        searchButton.click();
+});
 
 // Data Load Function
 const loadBookData = () => {
